@@ -695,7 +695,7 @@ def analyze(table_info):
                 # don't compress first sort key column. This will be set on the basis of the existing sort key not
                 # being modified, or on the assignment of the new first sortkey
                 if (abs(row_sortkey) == 1 and len(new_sortkey_arr) == 0) or (
-                        col in table_sortkeys and table_sortkeys.index(col) == 0):
+                        col in new_sortkey_arr and new_sortkey_arr.index(col) == 0):
                     compression = 'RAW'
                 else:
                     compression = row[2]
@@ -804,7 +804,9 @@ def analyze(table_info):
                                                                             schema_name,
                                                                             table_name)
                 if len(table_sortkeys) > 0:
-                    insert = "%s order by \"%s\";" % (insert, ",".join(table_sortkeys).replace(',', '\",\"'))
+                    insert = "%s order by \"%s\";" % (
+                        insert, ",".join(sortkeys.values()).replace(',', '\",\"')
+                    )
                 else:
                     insert = "%s;" % (insert)
 
