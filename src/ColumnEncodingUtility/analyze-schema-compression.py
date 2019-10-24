@@ -990,19 +990,6 @@ def run():
 
     comment("Analyzing %s for Columnar Encoding Optimisations with %s Threads..." % (snippet, threads))
 
-    if do_execute:
-        if drop_old_data:
-            really_go = getpass.getpass(
-                "This will make irreversible changes to your database, and cannot be undone. Type 'Yes' to continue: ")
-
-            if not really_go == 'Yes':
-                print("Terminating on User Request")
-                return TERMINATED_BY_USER
-
-        comment("Recommended encoding changes will be applied automatically...")
-    else:
-        pass
-
     # process the table name to support multiple items
     if table_name is not None:
         tables = ""
