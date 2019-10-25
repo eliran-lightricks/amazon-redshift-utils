@@ -113,7 +113,7 @@ query_group = None
 ssl = False
 suppress_cw = None
 cw = None
-statement_timeout = '1200000'
+statement_timeout = '0'
 
 
 def execute_query(string):
